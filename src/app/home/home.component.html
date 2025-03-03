@@ -1,0 +1,52 @@
+<div class="container">
+  
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>phone</th>
+          <th class="text-center">Actions</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <tr *ngFor="let user of users$ | async">
+          <td>
+            <span *ngIf="editingUserId !== user.id">{{ user.id }}</span>
+          </td>
+          <td>
+            <input *ngIf="editingUserId === user.id" [formControl]="nameControl">
+            <span *ngIf="editingUserId !== user.id">{{ user.name }}</span>
+          </td>
+          <td>
+            <input *ngIf="editingUserId === user.id" [formControl]="usernameControl">
+            <span *ngIf="editingUserId !== user.id">{{ user.username }}</span>
+          </td>
+          <td>
+            <input *ngIf="editingUserId === user.id" [formControl]="emailControl">
+            <span *ngIf="editingUserId !== user.id">{{ user.email }}</span>
+          </td>
+          <td>
+            <input *ngIf="editingUserId === user.id" [formControl]="phoneControl">
+            <span *ngIf="editingUserId !== user.id">{{ user.phone }}</span>
+          </td>
+          <td class="text-center">
+            <button  class="edit-btn" *ngIf="editingUserId === null" (click)="editUser(user)">
+              Edit
+            </button>
+            <button class="save-btn" *ngIf="editingUserId === user.id" (click)="saveUser(user)" >
+              Save
+            </button>
+            <button class="cancel-btn" *ngIf="editingUserId === user.id" (click)="cancelEdit()" >
+              Cancel
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
