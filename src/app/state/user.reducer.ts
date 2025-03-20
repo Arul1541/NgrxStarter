@@ -1,6 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import * as UserActions from '../state/user.actions';
 import { User } from '../models/user.model';
+import { state } from '@angular/animations';
 
 export interface UserState {
   users: User[];
@@ -45,5 +46,14 @@ export const userReducer = createReducer(
   on(UserActions.updateUserFailure, (state, { error }) => ({
     ...state,
     error
-  }))
+  })),
+
+  on(UserActions.updateUsersSuccess,(state,{users})=>({
+    ...state,
+    users
+  })),
+  on(UserActions.updateUsersFailure, (state, { error }) => ({
+    ...state,
+    error
+  })),
 );

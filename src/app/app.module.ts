@@ -1,4 +1,4 @@
-import {NgModule, isDevMode} from '@angular/core';
+import {NO_ERRORS_SCHEMA, NgModule, isDevMode} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AppComponent} from './app.component';
@@ -27,6 +27,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
   ],
   bootstrap: [
     AppComponent
+  ],
+  schemas:[
+    NO_ERRORS_SCHEMA
   ]
 })
 export class AppModule { }
